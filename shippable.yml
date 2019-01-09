@@ -17,26 +17,34 @@ build:
     - pip --version
     - virtualenv --version
     - git --version
-    - aws --version
-    - eb --version
-    - az --version
-    - jfrog --version
-    - gcloud version
+    - aws --version #1.15.14
+    - eb --version #3.12.4
+    - az --version #2.0.37
+    - jfrog --version #1.15.1
+    - gcloud version #200.0.0
     - git lfs version
-    - kubectl version --client
+    - kubectl version --client #1.10.0
     - kops version
     - helm version --client
     - doctl version
-    - ansible --version
+    - ansible --version #2.5.2
     - pip show boto
     - pip show boto3
     - pip show apache-libcloud
     - pip show azure
-    - pip show dopy
-    - packer --version
+    - pip show dopy 
+    - packer --version #1.2.3
     - jq --version
-    - terraform --version
+    - terraform --version #0.11.7
     - openstack --version
     - EXPECTED_DOCKER_VERSION="17.06.0-ce"
     - |
       [ $(docker version --format {{.Server.Version}}) == "$EXPECTED_DOCKER_VERSION" ]
+    - docker pull shippabledocker/sample_node_pvt:ecr
+    
+integrations:
+    
+  hub:
+ #Docker integration
+    - integrationName: ship-docker
+      type: dockerRegistryLogin
